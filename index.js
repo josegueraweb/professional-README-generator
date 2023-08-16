@@ -1,66 +1,77 @@
-// TODO: Include packages needed for this application
+// // TODO: Include packages needed for this application
+
+// const fs = require('fs');
+// const inquirer = require('inquirer');
+
+// // TODO: Create an array of questions for user input
+// const questions = [];
+
+// // TODO: Create a function to write README file
+// function writeToFile(fileName, data) {}
+
+// // TODO: Create a function to initialize app
+// function init() {}
+
+// // Function call to initialize app
+// init();
+
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
-
 
 const generateREADME = (title, description, installation, usage, contributions, testing, license, github, email, questions) => {
   return `
   
   # **${title}**
+
+  ## **Table of Contents**
+1. [Description](#description)
+2. [How to Install](#installation)
+3. [Usage](#usage)
+4. [How to Contribute](#contributions)
+5. [Testing](#testing)
+6. [License](#license)
+7. [Contact Information](#contact-information)
+8. [Submitting Questions](#submitting-questions)
  
-  ## **Description**
+  ## **Description**<a name="description"></a>
   
   ${description}
   
-  ## **How to Install**
+  ## **How to Install**<a name="installation"></a>
 
   ${installation}
 
-  ## **Usage Information**
+  ## **Usage Information**<a name="usage"></a>
   
   ${usage}
   
-  ## **How to Contribute**
+  ## **How to Contribute**<a name="contributions"></a>
   
   ${contributions}
   
-  ## **Testing**
+  ## **Testing**<a name="testing"></a>
   
   ${testing}
   
-  ## **License**
+  ## **License**<a name="license"></a>
   
   ${license}  
 
-  ## **Contact Information**
+  ## **Contact Information**<a name="contact-information"></a>
   
   ${github}
   ${email}
 
-  ## **Submitting Questions**
+  ## **Submitting Questions**<a name="submitting-questions"></a>
   
   ${questions}
   
   `;
 }
 
-
 inquirer
-  .prompt([
-    {
+  .prompt([{
       type: 'input',
       name: 'title',
       message: 'What is the Title of your project?',
