@@ -3,17 +3,23 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-// TODO: Create an array of questions for user input
-const questions = [];
+// // TODO: Create an array of questions for user input
+// const questions = [];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// // TODO: Create a function to write README file
+// function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
-function init() {}
+// // TODO: Create a function to initialize app
+// function init() {}
 
-// Function call to initialize app
-init();
+// // Function call to initialize app
+// init();
+
+
+const generateREADME = (title, description, installation, usage, contributions, testing, license, github, email, questions) => {
+  return ``;
+
+}
 
 
 inquirer
@@ -35,7 +41,7 @@ inquirer
     },
     {
       type: 'input',
-      name: 'usage-information',
+      name: 'usage',
       message: 'What are your directions for using your project?',
     },
     {
@@ -71,14 +77,21 @@ inquirer
     },
   ])
   .then((answers) => {
-
     console.log(answers);
+    const READMEContent = generateREADME(
+      answers.title,
+      answers.description,
+      answers.installation,
+      answers.usage,
+      answers.contributions,
+      answers.testing,
+      answers.license,
+      answers.github,
+      answers.email,
+      answers.questions,
+    );
 
-    
-
-    // const htmlPageContent = generateHTML(answers);
-
-    // fs.writeFile('index.html', htmlPageContent, (err) =>
-    //   err ? console.log(err) : console.log('Successfully created index.html!')
-    // );
+    fs.writeFile('README.md', READMEContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created README.md')
+    );
   });
