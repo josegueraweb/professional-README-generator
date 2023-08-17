@@ -1,66 +1,63 @@
-// TODO: Include packages needed for this application
-
+// NPM packages.
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
-
-
+// Stores prompt answers in a variable and returns data in a markdown template for the README.md file that is being generated.
 const generateREADME = (title, description, installation, usage, contributions, testing, license, github, email, questions) => {
+  
   return `
   
-  # **${title}**
+  # **${title}** 
+
+  ## **Table of Contents**
+  1. [Description](#description)
+  2. [Installation](#installation)
+  3. [Usage](#usage)
+  4. [Contributing](#contributing)
+  5. [Testing](#testing)
+  6. [License](#license)
+  7. [Contact Information](#contact-information)
+  8. [Questions](#questions)
  
-  ## **Description**
+  ## **Description**<a id="description"></a>
   
   ${description}
   
-  ## **How to Install**
+  ## **Installation**<a id="installation"></a>
 
   ${installation}
 
-  ## **Usage Information**
+  ## **Usage**<a id="usage"></a>
   
   ${usage}
   
-  ## **How to Contribute**
+  ## **Contributing**<a name="contributing"></a>
   
   ${contributions}
   
-  ## **Testing**
+  ## **Testing**<a id="testing"></a>
   
   ${testing}
   
-  ## **License**
+  ## **License**<a id="license"></a>
   
   ${license}  
 
-  ## **Contact Information**
+  ## **Contact Information**<a id="contact-information"></a>
   
-  ${github}
-  ${email}
+  ${github}\n
+  ${email} 
 
-  ## **Submitting Questions**
+  ## **Questions**<a id="questions"></a>
   
   ${questions}
   
   `;
 }
 
-
+// Questions for README.md.
 inquirer
-  .prompt([
-    {
+  .prompt([{
       type: 'input',
       name: 'title',
       message: 'What is the Title of your project?',
@@ -112,6 +109,8 @@ inquirer
       message: 'How should people reach you if they have questions about your project?',
     },
   ])
+
+  // Console.logs and stores data from inquierer prompts.
   .then((answers) => {
     console.log(answers);
     const READMEContent = generateREADME(
@@ -127,6 +126,7 @@ inquirer
       answers.questions,
     );
 
+    // Function to write README.md file using user data gathered from inquierer prompts.
     fs.writeFile('PRO-README.md', READMEContent, (err) =>
       err ? console.log(err) : console.log('Successfully created README.md')
     );
